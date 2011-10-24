@@ -12,7 +12,7 @@ public class SpitterTest {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("com/springinaction/spitter/spitter.xml");
 		SpitterDAO spitterDao = (SpitterDAO) ctx.getBean("spitterDao");
 		
-		// spitterDao.addSpitter(new Spitter("abot", "umbrella", "Anton Kharenko"));
+		//spitterDao.addSpitter(new Spitter("abot", "umbrella", "Anton Kharenko"));
 		
 		Spitter firstSpitter = spitterDao.getSpitterById(1);
 		System.out.println(firstSpitter);
