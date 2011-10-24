@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<bean id="duke" class="com.springinaction.springidol.Juggler">
+		<constructor-arg value="15"/>
+	</bean>
+	
+	<bean id="sonnet29" class="com.springinaction.springidol.Sonnet29"/>
+	
+	<bean id="poeticDuke" class="com.springinaction.springidol.PoeticJuggler">
+		<constructor-arg value="15"/>
+		<constructor-arg ref="sonnet29"/>
+	</bean> 
+	
+	<bean id="theStage" class="com.springinaction.springidol.Stage"
+		factory-method="getInstance" />
+		
+	<bean id="kenny" class="com.springinaction.springidol.Instrumentalist"> 
+		<property name="song" value="Jingle Bells"/>
+		<!-- 
+		<property name="instrument">
+			<bean class="com.springinaction.springidol.Saxophone"/>
+		</property>
+		-->
+	</bean>
+	
+	<bean id="saxophone" class="com.springinaction.springidol.Saxophone"/>
+	
+	<bean id="piano" class="com.springinaction.springidol.Piano"/>
+
+	<bean id="hank" class="com.springinaction.springidol.OneManBand">
+		<property name="instruments">
+			<list>
+				<ref bean="saxophone"/>
+				<ref bean="piano"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="johnDoe" class="com.springinaction.springidol.Volunteer" />
+	
+	<bean id="merlin" class="com.springinaction.springidol.Magician" />
+	
+	<bean id="audience" class="com.springinaction.springidol.Audience" />
+	
+	<bean id="contestantDelegate" class="com.springinaction.springidol.GraciousContestant"/>
+	
+	<aop:aspectj-autoproxy/>
+	
+	<aop:config>
+	
+		<!-- 
+		<aop:aspect ref="audience">
+			<aop:pointcut id="performance" expression="execution(* com.springinaction.springidol.Performer.perform(..))" />
+			
+			
+			<aop:before pointcut-ref="performance" method="takeSeats"/>
+			<aop:before pointcut-ref="performance" method="turnOffCellPhones"/>
+			<aop:after-returning pointcut-ref="performance" method="applaud"/>
+			<aop:after-throwing pointcut-ref="performance" method="demandRefund"/> 
+			
+			<aop:around pointcut-ref="performance" method="measurePerformanceDuration"/>
+		</aop:aspect>
+		 -->
+		
+		<aop:aspect ref="merlin">
+			<aop:pointcut id="thinking" 
+				expression="execution(* com.springinaction.springidol.Thinker.thinkOfSomething(String)) and args(thoughts)" />
+			<aop:before pointcut-ref="thinking" method="interceptThoughts" arg-names="thoughts" />
+		</aop:aspect>
+		
+		<aop:aspect>
+			<aop:declare-parents
+				types-matching="com.springinaction.springidol.Performer+"
+				implement-interface="com.springinaction.springidol.Contestant"
+				delegate-ref="contestantDelegate"
+			/>
+		</aop:aspect>
+		
+	</aop:config>
+	
+</beans>

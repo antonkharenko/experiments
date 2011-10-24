@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.hibernate.auction.model.Item" table="ITEM" lazy="true">
+		<id name="id" column="ITEM_ID" type="long">
+			<generator class="increment" />
+		</id>
+		<property name="name" column="NAME" type="string" />
+		<property name="description" column="DESCRIPTION" type="string" />
+		<property name="initialPrice" column="INITIAL_PRICE" type="long" />
+		<set name="bids" inverse="true" cascade="all-delete-orphan" lazy="true">
+			<key column="ITEM_ID"/>
+			<one-to-many class="org.hibernate.auction.model.Bid"/>
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.springinaction.spitter.persistence.Spitter" table="spitter">
+		<id name="id" column="spitter_id" type="long">
+			<generator class="increment" />
+		</id>
+		<property name="username" column="username" type="string" />
+		<property name="password" column="password" type="string" />
+		<property name="fullName" column="fullname" type="string" />
+	</class>
+</hibernate-mapping>

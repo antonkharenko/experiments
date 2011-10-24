@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.hibernate.auction.model.Participiant" table="PARTICIPIANT" lazy="true">
+		<id name="id" column="PARTICIPIANT_ID" type="long">
+			<generator class="native" />
+		</id>
+		<property name="name" column="NAME" type="string" />
+		<many-to-one name="group" class="org.hibernate.auction.model.Group" column="GROUP_ID" />
+	</class>
+</hibernate-mapping>
