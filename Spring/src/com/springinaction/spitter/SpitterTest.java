@@ -2,7 +2,6 @@ package com.springinaction.spitter;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.springinaction.spitter.persistence.Spitter;
 import com.springinaction.spitter.persistence.dao.SpitterDAO;
