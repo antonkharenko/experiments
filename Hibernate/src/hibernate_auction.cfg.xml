@@ -7,7 +7,7 @@
 	<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>  
     <property name="hibernate.connection.url">jdbc:mysql://localhost/auction</property>  
     <property name="hibernate.connection.username">root</property>  
-    <property name="hibernate.connection.password">ghbrjk</property>  
+    <property name="hibernate.connection.password">qwerty</property>  
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.c3p0.min_size">5</property>
     <property name="hibernate.c3p0.max_size">20</property>
