@@ -9,12 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.springinaction.spitter.persistence.Spitter;
 
 @Repository("spitterDao")
-@Transactional
-public class HibernateSpitterDAO implements SpitterDAO {
+public class HibernateSpitterDao implements SpitterDao {
 	private SessionFactory sessionFactory;
 
 	@Autowired
-	public HibernateSpitterDAO(SessionFactory sessionFactory) {
+	public HibernateSpitterDao(SessionFactory sessionFactory) {
 		this.sessionFactory=sessionFactory;
 	}
 	

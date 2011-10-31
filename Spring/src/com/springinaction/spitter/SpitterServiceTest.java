@@ -4,16 +4,16 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.springinaction.spitter.persistence.Spitter;
-import com.springinaction.spitter.persistence.dao.SpitterDAO;
+import com.springinaction.spitter.services.SpitterService;
 
-public class SpitterTest {
+public class SpitterServiceTest {
 	public static void main(String[] args) {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("com/springinaction/spitter/spitter.xml");
-		SpitterDAO spitterDao = (SpitterDAO) ctx.getBean("spitterDao");
 		
-		// spitterDao.addSpitter(new Spitter("abot", "umbrella", "Anton Kharenko"));
+		SpitterService spitterService = (SpitterService) ctx.getBean("spitterService");
+		//spitterService.addSpitter(new Spitter("abot", "umbrella", "Anton Kharenko"));
 		
-		Spitter firstSpitter = spitterDao.getSpitterById(1);
-		System.out.println(firstSpitter);
+		Spitter firstSpitter = spitterService.getSpitterById(1);
+		System.out.println("First spitter: " + firstSpitter);
 	}
 }

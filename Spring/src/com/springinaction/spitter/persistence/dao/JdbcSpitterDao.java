@@ -11,17 +11,19 @@ import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 
 import com.springinaction.spitter.persistence.Spitter;
 
-public class JdbcSpitterDAO extends SimpleJdbcDaoSupport implements SpitterDAO {
+public class JdbcSpitterDao extends SimpleJdbcDaoSupport implements SpitterDao {
 	private static final String SQL_INSERT_SPITTER = 
 			"insert into spitter (username, password, fullname) values (:username, :password, :fullname)";
 	
 	private static final String SQL_SELECT_SPITTER_BY_ID =
 			"select spitter_id, username, password, fullname from spitter where spitter_id = ?";
 	
+	/*
 	private static final String SQL_UPDATE_SPITTER = 
 			"update spitter set username = ?, password = ?, fullname = ? where spitter_id = ?";
+	*/
 	
-	public JdbcSpitterDAO() {
+	public JdbcSpitterDao() {
 	}
 
 	public void addSpitter(Spitter spitter) {
