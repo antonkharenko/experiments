@@ -7,7 +7,14 @@
 
     <display-name>Spitter Web Application</display-name>
     <description></description>
-
+	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:spitter.xml
+		</param-value>
+	</context-param>
+	
     <servlet>
       	<servlet-name>spitter</servlet-name>
       	<servlet-class>
@@ -24,4 +31,10 @@
     <session-config>
       	<session-timeout>30</session-timeout>
     </session-config>
+    
+    <listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
 </web-app>
