@@ -2,6 +2,8 @@ package com.springinaction.spitter.mvc;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,13 +43,12 @@ public class SpitterController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public String addSpitterFromForm(/*@Valid*/ Spitter spitter/*, 
-			BindingResult bindingResult*/) {
+	public String addSpitterFromForm(@Valid Spitter spitter, 
+			BindingResult bindingResult) {
 		
-		/*if(bindingResult.hasErrors()){
+		if(bindingResult.hasErrors()){
 			return "spitters/edit";
 		}
-		*/
 		
 		//spitterService.saveSpitter(spitter);
 		
