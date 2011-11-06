@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Spitter" default="compile" basedir=".">
+
+<!-- ==================== File and Directory Names ======================== -->
+
+  <property name="app.name"      value="spitter"/>
+  <property name="app.path"      value="/${app.name}"/>
+  <property name="build.home"    value="${basedir}/build"/>
+  <property name="catalina.home" value="d:/soft/apache-tomcat-6.0.33"/>
+  <property name="dist.home"     value="${basedir}/dist"/>
+  <property name="src.home"      value="${basedir}/src"/>
+  <property name="web.home"      value="${basedir}/web"/>
+
+
+<!-- ==================== External Dependencies =========================== -->
+
+<!--
+
+  Use property values to define the locations of external JAR files on which
+  your application will depend.  In general, these values will be used for
+  two purposes:
+  * Inclusion on the classpath that is passed to the Javac compiler
+  * Being copied into the "/WEB-INF/lib" directory during execution
+    of the "deploy" target.
+
+  Because we will automatically include all of the Java classes that Tomcat 6
+  exposes to web applications, we will not need to explicitly list any of those
+  dependencies.  You only need to worry about external dependencies for JAR
+  files that you are going to include inside your "/WEB-INF/lib" directory.
+
+-->
+
+<!-- Dummy external dependency -->
+<!--
+  <property name="foo.jar"
+           value="/path/to/foo.jar"/>
+-->
+
+
+<!-- ==================== Compilation Classpath =========================== -->
+
+<!--
+
+  Rather than relying on the CLASSPATH environment variable, Ant includes
+  features that makes it easy to dynamically construct the classpath you
+  need for each compilation.  The example below constructs the compile
+  classpath to include the servlet.jar file, as well as the other components
+  that Tomcat makes available to web applications automatically, plus anything
+  that you explicitly added.
+
+-->
+
+  <path id="compile.classpath">
+
+    <!-- Include all JAR files that will be included in /WEB-INF/lib -->
+    <!-- *** CUSTOMIZE HERE AS REQUIRED BY YOUR APPLICATION *** -->
+<!--
+    <pathelement location="${foo.jar}"/>
+-->
+
+    <!-- Include all elements that Tomcat exposes to applications -->
+    <fileset dir="${catalina.home}/bin">
+      <include name="*.jar"/>
+    </fileset>
+    <pathelement location="${catalina.home}/lib"/>
+    <fileset dir="${catalina.home}/lib">
+      <include name="*.jar"/>
+    </fileset>
+
+  </path>
+
+<!--  ==================== Compilation Control Options ==================== -->
+
+  <property name="compile.debug"       value="true"/>
+  <property name="compile.deprecation" value="false"/>
+  <property name="compile.optimize"    value="true"/>
+
+
+
+<!-- ==================== All Target ====================================== -->
+
+<!--
+
+  The "all" target is a shortcut for running the "clean" target followed
+  by the "compile" target, to force a complete recompile.
+
+-->
+
+  <target name="all" depends="clean,compile"
+   description="Clean build and dist directories, then compile"/>
+
+
+
+<!-- ==================== Clean Target ==================================== -->
+
+<!--
+
+  The "clean" target deletes any previous "build" and "dist" directory,
+  so that you can be ensured the application can be built from scratch.
+
+-->
+
+  <target name="clean"
+   description="Delete old build and dist directories">
+    <delete dir="${build.home}"/>
+    <delete dir="${dist.home}"/>
+  </target>
+
+
+
+<!-- ==================== Compile Target ================================== -->
+
+<!--
+
+  The "compile" target transforms source files (from your "src" directory)
+  into object files in the appropriate location in the build directory.
+  This example assumes that you will be including your classes in an
+  unpacked directory hierarchy under "/WEB-INF/classes".
+
+-->
+
+  <target name="compile" depends="prepare"
+   description="Compile Java sources">
+
+    <!-- Compile Java classes as necessary -->
+    <mkdir    dir="${build.home}/WEB-INF/classes"/>
+    <javac srcdir="${src.home}"
+          destdir="${build.home}/WEB-INF/classes"
+            debug="${compile.debug}"
+      deprecation="${compile.deprecation}"
+         optimize="${compile.optimize}">
+        <classpath refid="compile.classpath"/>
+    </javac>
+
+    <!-- Copy application resources -->
+    <copy  todir="${build.home}/WEB-INF/classes">
+      <fileset dir="${src.home}" excludes="**/*.java"/>
+    </copy>
+
+  </target>
+
+
+
+<!-- ==================== Dist Target ===================================== -->
+
+
+<!--
+
+  The "dist" target creates a binary distribution of your application
+  in a directory structure ready to be archived in a tar.gz or zip file.
+  Note that this target depends on two others:
+
+  * "compile" so that the entire web application (including external
+    dependencies) will have been assembled
+
+-->
+
+  <target name="dist" depends="compile"
+   description="Create binary distribution">
+
+    <!-- Create application JAR file -->
+    <jar jarfile="${dist.home}/${app.name}.war"
+         basedir="${build.home}"/>
+
+    <!-- Copy additional files to ${dist.home} as necessary -->
+
+  </target>
+
+<!-- ==================== Prepare Target ================================== -->
+
+<!--
+
+  The "prepare" target is used to create the "build" destination directory,
+  and copy the static contents of your web application to it.  If you need
+  to copy static files from external dependencies, you can customize the
+  contents of this task.
+
+  Normally, this task is executed indirectly when needed.
+
+-->
+
+  <target name="prepare">
+
+    <!-- Create build directories as needed -->
+    <mkdir  dir="${build.home}"/>
+    <mkdir  dir="${build.home}/WEB-INF"/>
+    <mkdir  dir="${build.home}/WEB-INF/classes"/>
+
+
+    <!-- Copy static content of this web application -->
+    <copy todir="${build.home}">
+      <fileset dir="${web.home}"/>
+    </copy>
+
+    <!-- Copy external dependencies as required -->
+    <!-- *** CUSTOMIZE HERE AS REQUIRED BY YOUR APPLICATION *** -->
+    <mkdir  dir="${build.home}/WEB-INF/lib"/>
+<!--
+    <copy todir="${build.home}/WEB-INF/lib" file="${foo.jar}"/>
+-->
+
+    <!-- Copy static files from external dependencies as needed -->
+    <!-- *** CUSTOMIZE HERE AS REQUIRED BY YOUR APPLICATION *** -->
+
+  </target>
+
+</project>
