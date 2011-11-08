@@ -8,7 +8,7 @@ import com.springinaction.spitter.services.SpitterService;
 
 public class SpitterServiceTest {
 	public static void main(String[] args) {
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("com/springinaction/spitter/spitter.xml");
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("spitter.xml");
 		
 		SpitterService spitterService = (SpitterService) ctx.getBean("spitterService");
 		//spitterService.addSpitter(new Spitter("abot", "umbrella", "Anton Kharenko"));

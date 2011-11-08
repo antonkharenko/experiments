@@ -29,5 +29,9 @@
 	<classpathentry exported="true" kind="lib" path="lib/jta-1.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/slf4j-api-1.6.2.jar" sourcepath="lib-src/slf4j-api-1.6.2-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/slf4j-simple-1.6.2.jar" sourcepath="lib-src/slf4j-simple-1.6.2-sources.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-validator-4.2.0.Final.jar"/>
+	<classpathentry kind="lib" path="lib/org.springframework.web-3.0.6.RELEASE.jar" sourcepath="lib-src/org.springframework.web-sources-3.0.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/org.springframework.web.servlet-3.0.6.RELEASE.jar" sourcepath="lib-src/org.springframework.web.servlet-sources-3.0.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/validation-api-1.0.0.GA.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
