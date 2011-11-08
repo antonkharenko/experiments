@@ -7,8 +7,8 @@
 		<id name="id" column="spittle_id" type="long">
 			<generator class="increment" />
 		</id>
-		<many-to-one name="spitter" column="spitter_id" class="Spitter" not-found="ignore" outer-join="true" />
-		<property name="text" column="text" type="string" />
-		<property name="when" column="when" type="timestamp" />
+		<many-to-one name="spitter" column="spitter_id" class="com.springinaction.spitter.persistence.Spitter" not-found="ignore" outer-join="true" />
+		<property name="text" column="spittle_text" type="string" />
+		<property name="when" column="spittle_when" type="timestamp" />
 	</class>
 </hibernate-mapping>

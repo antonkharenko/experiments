@@ -10,6 +10,12 @@ public class Spittle {
 	
 	public Spittle() {
 	}
+	
+	public Spittle(Spitter spitter, String text, Timestamp when) {
+		this.spitter = spitter;
+		this.text = text;
+		this.when = when;
+	}
 
 	public Long getId() {
 		return id;

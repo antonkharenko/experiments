@@ -1,5 +1,6 @@
 package com.springinaction.spitter.persistence.dao;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,9 @@ import com.springinaction.spitter.persistence.Spitter;
 
 @Repository("spitterDao")
 public class HibernateSpitterDao implements SpitterDao {
+	
+	private static final String HQL_SELECT_SPITTER_BY_NAME = "from Spitter where username = :username";
+	
 	private SessionFactory sessionFactory;
 
 	@Autowired
@@ -20,15 +24,17 @@ public class HibernateSpitterDao implements SpitterDao {
 		return sessionFactory.getCurrentSession();
 	}
 
-	public void addSpitter(Spitter spitter) {
-		currentSession().save(spitter);
-	}
-
 	public Spitter getSpitterById(long id) {
 		return (Spitter) currentSession().get(Spitter.class, id);
 	}
 
 	public void saveSpitter(Spitter spitter) {
-		currentSession().update(spitter);
+		currentSession().saveOrUpdate(spitter);
+	}
+
+	@Override
+	public Spitter getSpitterByName(String username) {
+		Query query = currentSession().createQuery(HQL_SELECT_SPITTER_BY_NAME).setParameter("username", username);
+		return HibernateUtils.uniqueResultAndCast(query);
 	}
 }

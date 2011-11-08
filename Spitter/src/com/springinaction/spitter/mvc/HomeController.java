@@ -10,7 +10,7 @@ import com.springinaction.spitter.services.SpitterService;
 
 @Controller
 public class HomeController {
-	public static final int DEFAULT_SPITTLES_PER_PAGE=25;
+	public static final int DEFAULT_SPITTLES_PER_PAGE = 5;
 
 	private SpitterService spitterService;
 
@@ -21,7 +21,7 @@ public class HomeController {
 	
 	@RequestMapping({"/", "/home"})
 	public String showHomePage(Map<String, Object> model) {
-		//model.put("spittles", spitterService.getRecentSpittles(DEFAULT_SPITTLES_PER_PAGE));
+		model.put("spittles", spitterService.getRecentSpittles(DEFAULT_SPITTLES_PER_PAGE));
 		return "home";
 	}
 }

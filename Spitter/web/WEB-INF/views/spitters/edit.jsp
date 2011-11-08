@@ -6,15 +6,15 @@
 	<fieldset>
 		<table cellspacing="0">
 			<tr>
-				<th><label for="user_full_name">Fullname:</label></th>
-				<td><sf:input path="fullName" size="15" id="user_full_name"/></td>
-			</tr>
-			<tr>
 				<th><label for="user_screen_name">Username:</label></th>
 				<td>
 					<sf:input path="username" size="15" maxlength="15" id="user_screen_name"/>
 					<small id="username_msg">No spaces, please.</small>
 				</td>
+			</tr>
+			<tr>
+				<th><label for="user_full_name">Fullname:</label></th>
+				<td><sf:input path="fullName" size="15" id="user_full_name"/></td>
 			</tr>
 			<tr>
 				<th><label for="user_password">Password:</label></th>
@@ -24,17 +24,9 @@
 				</td>
 			</tr>
 			<tr>
-				<th><label for="user_email">EmailAddress:</label></th>
-				<td>
-					<sf:input path="email" size="30" id="user_email"/>
-					<small>In case you forget something</small>
-				</td>
-			</tr>
-			<tr>
 				<th></th>
 				<td>
-					<sf:checkbox path="updateByEmail" id="user_send_email_newsletter"/>
-					<label for="user_send_email_newsletter">Send me email updates!</label>
+					<input name="commit" type="submit" value="I accept. Create my account."/>
 				</td>
 			</tr>
 		</table>

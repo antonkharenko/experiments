@@ -17,7 +17,7 @@ import com.springinaction.spitter.persistence.Spitter;
 import com.springinaction.spitter.services.SpitterService;
 
 @Controller
-@RequestMapping("/spitter")
+@RequestMapping("/spitters")
 public class SpitterController {
 	
 	private final SpitterService spitterService;
@@ -27,22 +27,13 @@ public class SpitterController {
 		this.spitterService=spitterService;
 	}
 
-	@RequestMapping(value = "/spittles", method = GET)
-	public String listSpittlesForSpitter(
-			@RequestParam("spitter") String username, Model model) {
-		/*Spitter spitter = spitterService.getSpitter(username);
-		model.addAttribute(spitter);
-		model.addAttribute(spitterService.getSpittlesForSpitter(username));*/
-		return"spittles/list";
-	}
-	
 	@RequestMapping(method = RequestMethod.GET, params = "new")
 	public String createSpitterProfile(Model model) {
 		model.addAttribute(new Spitter());
 		return "spitters/edit";
 	}
 	
-	@RequestMapping(method=RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public String addSpitterFromForm(@Valid Spitter spitter, 
 			BindingResult bindingResult) {
 		
@@ -50,14 +41,16 @@ public class SpitterController {
 			return "spitters/edit";
 		}
 		
-		//spitterService.saveSpitter(spitter);
+		spitterService.saveSpitter(spitter);
 		
 		return "redirect:/spitters/" + spitter.getUsername();
 	}
 	
-	@RequestMapping(value="/{username}",method=RequestMethod.GET)
+	@RequestMapping(value = "/{username}", method = RequestMethod.GET)
 	public String showSpitterProfile(@PathVariable String username, Model model){
-		//model.addAttribute(spitterService.getSpitter(username));
-		return "spitters/view";
+		Spitter spitter = spitterService.getSpitterByName(username);
+		model.addAttribute(spitter);
+		model.addAttribute(spitterService.getSpittlesForSpitter(username));
+		return"spittles/list";
 	}
 }

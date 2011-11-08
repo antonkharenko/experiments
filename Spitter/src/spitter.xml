@@ -16,20 +16,19 @@
 	
 	
 	<!-- Data source configuration -->
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 		<property name="url" value="jdbc:mysql://localhost/spitter"/>
 		<property name="username" value="root"/>
 		<property name="password" value="qwerty"/>
+		<property name="initialSize" value="10"/>
+		<property name="maxActive" value="0"/>
+		<property name="maxIdle" value="10"/>
 	</bean>
 	
-	<!-- JDBC DAO configuration
-	<bean id="spitterDao" class="com.springinaction.spitter.persistence.dao.JdbcSpitterDao">
-		<property name="dataSource" ref="dataSource"/>
-	</bean> 
-	-->
+	<!-- Peristence configuration -->
 	
-	<!-- Hibernate DAO configuration -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="mappingResources">
@@ -50,16 +49,18 @@
 	
 	<context:component-scan base-package="com.springinaction.spitter.persistence" />
 	
-	<!-- Transactions configuration  -->
+	
+	<!-- Service configuration  -->
+	
 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
 	<tx:annotation-driven/>
 	
-	<!-- Service layer configuration -->
 	<bean id="spitterService" class="com.springinaction.spitter.services.SpitterServiceImpl">
 		<property name="spitterDao" ref="spitterDao"/>
+		<property name="spittleDao" ref="spittleDao"/>
 	</bean>
 	
 </beans>
