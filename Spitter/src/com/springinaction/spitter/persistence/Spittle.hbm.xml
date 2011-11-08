@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.springinaction.spitter.persistence.Spittle" table="spittle">
+		<id name="id" column="spittle_id" type="long">
+			<generator class="increment" />
+		</id>
+		<many-to-one name="spitter" column="spitter_id" class="Spitter" not-found="ignore" outer-join="true" />
+		<property name="text" column="text" type="string" />
+		<property name="when" column="when" type="timestamp" />
+	</class>
+</hibernate-mapping>

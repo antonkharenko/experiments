@@ -35,6 +35,7 @@
 		<property name="mappingResources">
 			<list>
 				<value>com/springinaction/spitter/persistence/Spitter.hbm.xml</value>
+				<value>com/springinaction/spitter/persistence/Spittle.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

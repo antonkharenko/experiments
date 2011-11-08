@@ -33,5 +33,18 @@
 	<classpathentry kind="lib" path="lib/org.springframework.web-3.0.6.RELEASE.jar" sourcepath="lib-src/org.springframework.web-sources-3.0.6.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/org.springframework.web.servlet-3.0.6.RELEASE.jar" sourcepath="lib-src/org.springframework.web.servlet-sources-3.0.6.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/validation-api-1.0.0.GA.jar"/>
+	<classpathentry kind="lib" path="lib/commons-beanutils-1.8.0.jar"/>
+	<classpathentry kind="lib" path="lib/commons-dbcp-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/commons-digester-2.0.jar"/>
+	<classpathentry kind="lib" path="lib/commons-pool-1.5.6.jar"/>
+	<classpathentry kind="lib" path="lib/jcl-over-slf4j-1.6.2.jar"/>
+	<classpathentry kind="lib" path="lib/jstl-api-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/jstl-impl-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/tiles-api-2.2.2.jar"/>
+	<classpathentry kind="lib" path="lib/tiles-core-2.2.2.jar"/>
+	<classpathentry kind="lib" path="lib/tiles-jsp-2.2.2.jar"/>
+	<classpathentry kind="lib" path="lib/tiles-servlet-2.2.2.jar"/>
+	<classpathentry kind="lib" path="lib/tiles-template-2.2.2.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang3-3.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
