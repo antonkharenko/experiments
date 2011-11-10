@@ -1,9 +1,10 @@
+package algorithms;
 
-public class MyList {
+public class MyLinkedList {
 	private Entity head;
 	private Entity tail;
 	
-	public void addToEnd(Object element) {
+	public void addToHead(Object element) {
 		Entity newEntity = new Entity(element);
 		if (head == null) {
 			head = newEntity;
