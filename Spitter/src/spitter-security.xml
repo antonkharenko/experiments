@@ -13,16 +13,26 @@
 	
 	<http auto-config="true">
 		<intercept-url pattern="/**" access="ROLE_SPITTER"/>
+		<remember-me key="spitterKey" token-validity-seconds="2419200"/>
 	</http>
 	
+	<!-- 
 	<user-service id="userService">
 		<user name="habuma" password="letmein" authorities="ROLE_SPITTER,ROLE_ADMIN"/>
 		<user name="user" password="user" authorities="ROLE_SPITTER"/>
 		<user name="admin" password="admin" authorities="ROLE_ADMIN"/>
 	</user-service>
+	-->
+	
+	<jdbc-user-service id="userService" 
+		data-source-ref="dataSource"
+		users-by-username-query="select username, password, true from spitter where username=?"
+		authorities-by-username-query="select username, 'ROLE_SPITTER' from spitter where username=?"/>
 	
 	<authentication-manager>
 		<authentication-provider user-service-ref="userService"/>
 	</authentication-manager>
+	
+	<global-method-security secured-annotations="enabled"/>
 	
 </beans:beans>
