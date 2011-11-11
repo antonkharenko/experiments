@@ -1,8 +1,12 @@
 package com.springinaction.spitter.persistence;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Spittle {
+public class Spittle implements Serializable {
+	
+	private static final long serialVersionUID = 3480196056602249141L;
+	
 	private Long id;
 	private Spitter spitter;
 	private String text;

@@ -1,6 +1,11 @@
 package com.springinaction.spitter.persistence;
 
-public class Spitter {
+import java.io.Serializable;
+
+public class Spitter implements Serializable {
+	
+	private static final long serialVersionUID = 8795444185043997082L;
+	
 	private Long id;
 	private String username;
 	private String password;

@@ -21,4 +21,13 @@ public interface SpitterService {
 	public List<Spittle> getSpittlesForSpitter(String username);
 	
 	public List<Spittle> getRecentSpittles(int maxCount);
+	
+	/*
+	//TODO consider adding to Spitter service such methods
+	void startFollowing(Spitter follower,Spitter followee);
+	List<Spittle> getSpittlesForSpitter(Spitter spitter);
+	Spittle getSpittleById(long id);
+	void deleteSpittle(long id);
+	List<Spitter> getAllSpitters();
+	*/
 }
