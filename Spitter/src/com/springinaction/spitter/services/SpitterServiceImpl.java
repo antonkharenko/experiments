@@ -49,4 +49,19 @@ public class SpitterServiceImpl implements SpitterService {
 	public void saveSpittle(Spittle spittle) {
 		spittleDao.saveSpittle(spittle);
 	}
+
+	@Override
+	public void deleteSpittle(long id) {
+		spittleDao.deleteSpittle(id);
+	}
+	
+	@Override
+	public Spittle getSpittleById(long id) {
+		return spittleDao.getSpittleById(id);
+	}
+	
+	@Override
+	public List<Spittle> getSpittlesForSpitter(Spitter spitter) {
+		return spittleDao.getSpittlesForSpitter(spitter);
+	}
 }

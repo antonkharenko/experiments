@@ -22,12 +22,18 @@ public interface SpitterService {
 	
 	public List<Spittle> getRecentSpittles(int maxCount);
 	
+	public void deleteSpittle(long id);
+	
+	public Spittle getSpittleById(long id);
+	
+	public List<Spittle> getSpittlesForSpitter(Spitter spitter);
+	
 	/*
 	//TODO consider adding to Spitter service such methods
 	void startFollowing(Spitter follower,Spitter followee);
-	List<Spittle> getSpittlesForSpitter(Spitter spitter);
-	Spittle getSpittleById(long id);
-	void deleteSpittle(long id);
-	List<Spitter> getAllSpitters();
+	
+	public List<Spitter> getAllSpitters();
+	
+	
 	*/
 }

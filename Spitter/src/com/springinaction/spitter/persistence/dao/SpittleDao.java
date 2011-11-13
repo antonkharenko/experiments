@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.security.access.annotation.Secured;
 
+import com.springinaction.spitter.persistence.Spitter;
 import com.springinaction.spitter.persistence.Spittle;
 
 public interface SpittleDao {
@@ -14,4 +15,10 @@ public interface SpittleDao {
 	public List<Spittle> getSpittlesForSpitter(String username);
 	
 	public List<Spittle> getRecentSpittles(int maxCount);
+	
+	public void deleteSpittle(long id);
+
+	public Spittle getSpittleById(long id);
+
+	public List<Spittle> getSpittlesForSpitter(Spitter spitter);
 }

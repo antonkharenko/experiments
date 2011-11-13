@@ -65,11 +65,16 @@
 	</bean>
 	
 	
-	<!-- RMI configuration  -->
+	<!-- RMI Configuration  -->
 	
 	<bean class="org.springframework.remoting.rmi.RmiServiceExporter"
 		p:service-ref="spitterService"
 		p:serviceName="SpitterService"
 		p:serviceInterface="com.springinaction.spitter.services.SpitterService"/>
+	
+	<!-- JAX-WS Configuration -->
+	
+	<bean class="org.springframework.remoting.jaxws.SimpleJaxWsServiceExporter"
+		p:baseAddress="http://localhost:8888/services/"/>
 	
 </beans>

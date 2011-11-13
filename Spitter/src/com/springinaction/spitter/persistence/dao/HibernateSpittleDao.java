@@ -52,4 +52,21 @@ public class HibernateSpittleDao implements SpittleDao {
 	public void saveSpittle(Spittle spittle) {
 		currentSession().save(spittle);
 	}
+	
+	@Override
+	public void deleteSpittle(long id) {
+		Spittle spittle = getSpittleById(id);
+		currentSession().delete(spittle);
+	}
+	
+	@Override
+	public Spittle getSpittleById(long id) {
+		return (Spittle) currentSession().get(Spitter.class, id);
+	}
+
+	@Override
+	public List<Spittle> getSpittlesForSpitter(Spitter spitter) {
+		//TODO implement if needed!
+		return null;
+	}
 }
