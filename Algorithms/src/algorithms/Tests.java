@@ -25,6 +25,7 @@ public class Tests {
 		testList.addToHead("B");
 		testList.addToHead("C");
 		testList.addToHead("D");
+		testList.addToHead("E");
 		
 		System.out.println("Source list: " + testList);
 		testList.reverse();
