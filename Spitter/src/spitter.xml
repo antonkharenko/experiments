@@ -51,6 +51,8 @@
 	<context:component-scan base-package="com.springinaction.spitter.persistence" />
 	
 	
+	<context:component-scan base-package="com.springinaction.spitter.mvc" />
+	
 	<!-- Service configuration  -->
 	
 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
@@ -76,5 +78,33 @@
 	
 	<bean class="org.springframework.remoting.jaxws.SimpleJaxWsServiceExporter"
 		p:baseAddress="http://localhost:8888/services/"/>
+		
+	<!--  JMX Configuration -->
+	
+	<!-- 
+	<bean id="mbeanExporter" class="org.springframework.jmx.export.MBeanExporter">
+		<property name="beans">
+			<map>
+				<entry key="spitter:name=HomeController" value-ref="homeController"/>
+			</map>
+		</property>
+		
+		<property name="assembler" ref="assembler"/>
+	</bean>
+	-->
+	
+	<!-- Assembler which lists methods
+	<bean id="assembler" 
+		class="org.springframework.jmx.export.assembler.MethodNameBasedMBeanInfoAssembler"
+		p:managedMethods="getSpittlesPerPage,setSpittlesPerPage"/>
+	-->
+	
+	<!-- Assembler which uses interfaces 
+	<bean id="assembler"
+		class="org.springframework.jmx.export.assembler.InterfaceBasedMBeanInfoAssembler"
+		p:managedInterfaces="com.springinaction.spitter.jmx.HomeControllerManagedOperations"/>
+	-->
+	
+	<context:mbean-export/>
 	
 </beans>
