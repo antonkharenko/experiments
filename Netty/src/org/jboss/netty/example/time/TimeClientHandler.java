@@ -1,28 +1,25 @@
-package org.jboss.netty.example.discard;
+package org.jboss.netty.example.time;
+
+import java.util.Date;
 
 import org.jboss.netty.buffer.ChannelBuffer;
-import org.jboss.netty.channel.Channel;
 import org.jboss.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.channel.ExceptionEvent;
 import org.jboss.netty.channel.MessageEvent;
 import org.jboss.netty.channel.SimpleChannelHandler;
 
-public class DiscardServerHandler extends SimpleChannelHandler {
-
+public class TimeClientHandler extends SimpleChannelHandler {
+	
     @Override
     public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) {
-    	ChannelBuffer buf = (ChannelBuffer) e.getMessage();
-	    while(buf.readable()) {
-	        System.out.println((char) buf.readByte());
-	        System.out.flush();
-	    }
+    	UnixTime m = (UnixTime) e.getMessage();
+        System.out.println(m);
+        e.getChannel().close();
     }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, ExceptionEvent e) {
         e.getCause().printStackTrace();
-        
-        Channel ch = e.getChannel();
-        ch.close();
+        e.getChannel().close();
     }
 }
