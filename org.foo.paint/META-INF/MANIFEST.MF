@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.foo.paint
+Bundle-SymbolicName: org.foo.paint
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.foo.shape,
+ org.foo.shape.circle,
+ org.foo.shape.square,
+ org.foo.shape.triangle,
+ org.osgi.framework;version="1.5.0"
+Bundle-Activator: org.foo.paint.activator.Activator
