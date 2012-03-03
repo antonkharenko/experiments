@@ -1,4 +1,4 @@
-package algorithms;
+package com.playtech;
 
 public class MyLinkedList {
 	private Entity head;

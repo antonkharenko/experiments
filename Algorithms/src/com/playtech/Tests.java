@@ -1,4 +1,4 @@
-package algorithms;
+package com.playtech;
 
 import java.util.Arrays;
 
