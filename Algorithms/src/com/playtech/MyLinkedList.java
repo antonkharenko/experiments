@@ -4,7 +4,7 @@ public class MyLinkedList {
 	private Entity head;
 	private Entity tail;
 	
-	public void addToHead(Object element) {
+	public void add(Object element) {
 		Entity newEntity = new Entity(element);
 		if (head == null) {
 			head = newEntity;

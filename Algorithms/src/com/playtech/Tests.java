@@ -21,11 +21,11 @@ public class Tests {
 	@Test
 	public void testMyLinkedListReverse() {
 		MyLinkedList testList = new MyLinkedList();
-		testList.addToHead("A");
-		testList.addToHead("B");
-		testList.addToHead("C");
-		testList.addToHead("D");
-		testList.addToHead("E");
+		testList.add("A");
+		testList.add("B");
+		testList.add("C");
+		testList.add("D");
+		testList.add("E");
 		
 		System.out.println("Source list: " + testList);
 		testList.reverse();
