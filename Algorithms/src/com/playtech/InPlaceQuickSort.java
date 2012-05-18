@@ -1,28 +1,38 @@
 package com.playtech;
 
-public class QuickSort {
+/**
+ * Worst performance: 		O(n^2)
+ * Average performance: 	O(n log n)
+ * Best performance: 		O(n log n)
+ * Worst space complexity: 	O(log n)
+ */
+public class InPlaceQuickSort extends AbstractSortAlgorithm {
 
-	public static void sort(int[] array) {
-		quickSort(array, 0, array.length - 1);
+	public InPlaceQuickSort() {}
+
+	@Override
+	public int[] sort(int[] a) {
+		inPlaceQuickSort(a, 0, a.length - 1);
+		return a;
 	}
 	
-	private static void quickSort(int[] array, int leftIndex, int rightIndex) {
+	private void inPlaceQuickSort(int[] a, int leftIndex, int rightIndex) {
 		if (leftIndex < rightIndex) {
 			// Choose pivot index at middle
 			int pivotIndex = leftIndex + (rightIndex - leftIndex) / 2;
 
 			// Get lists of bigger and smaller items and final position of pivot
-			int pivotNewIndex = partition(array, leftIndex, rightIndex, pivotIndex);
+			int pivotNewIndex = partition(a, leftIndex, rightIndex, pivotIndex);
 
 			// Recursively sort elements smaller than the pivot
-			quickSort(array, leftIndex, pivotNewIndex - 1);
+			inPlaceQuickSort(a, leftIndex, pivotNewIndex - 1);
 
 			// Recursively sort elements at least as big as the pivot
-			quickSort(array, pivotNewIndex + 1, rightIndex);
+			inPlaceQuickSort(a, pivotNewIndex + 1, rightIndex);
 		}
 	}
 	
-	private static int partition(int[] array, int leftIndex, int rightIndex, int pivotIndex) {
+	private int partition(int[] array, int leftIndex, int rightIndex, int pivotIndex) {
 		int pivotValue = array[pivotIndex];
 		swap(array, pivotIndex, rightIndex);  // Move pivot to end
 		int newPivotIndex = leftIndex;
@@ -34,12 +44,6 @@ public class QuickSort {
 		}
 		swap(array, newPivotIndex, rightIndex);  // Move pivot to its final place
 		return newPivotIndex;
-		
 	}
 	
-	private static void swap(int[] array, int fromIndex, int toIndex) {
-		int tmp = array[fromIndex];
-		array[fromIndex] = array[toIndex];
-		array[toIndex] = tmp;
-	}
 }
