@@ -1,9 +1,1 @@
 bin/
-/.settings
-*/.settings
-/.classpath
-*/.classpath
-/.project
-*/.project
-/target
-*/target
