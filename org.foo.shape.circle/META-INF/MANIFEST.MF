@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: org.foo.shape.circle
-Bundle-SymbolicName: org.foo.shape.circle
-Bundle-Version: 1.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: org.foo.shape
-Export-Package: org.foo.shape.circle
